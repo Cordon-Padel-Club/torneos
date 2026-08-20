@@ -12,9 +12,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>/* lz-string 1.5.0 embebido: el archivo funciona sin internet */
-var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",n="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-$",e={};function t(r,o){if(!e[r]){e[r]={};for(var n=0;n<r.length;n++)e[r][r.charAt(n)]=n}return e[r][o]}var i={compressToBase64:function(r){if(null==r)return"";var n=i._compress(r,6,function(r){return o.charAt(r)});switch(n.length%4){default:case 0:return n;case 1:return n+"===";case 2:return n+"==";case 3:return n+"="}},decompressFromBase64:function(r){return null==r?"":""==r?null:i._decompress(r.length,32,function(n){return t(o,r.charAt(n))})},compressToUTF16:function(o){return null==o?"":i._compress(o,15,function(o){return r(o+32)})+" "},decompressFromUTF16:function(r){return null==r?"":""==r?null:i._decompress(r.length,16384,function(o){return r.charCodeAt(o)-32})},compressToUint8Array:function(r){for(var o=i.compress(r),n=new Uint8Array(2*o.length),e=0,t=o.length;e<t;e++){var s=o.charCodeAt(e);n[2*e]=s>>>8,n[2*e+1]=s%256}return n},decompressFromUint8Array:function(o){if(null==o)return i.decompress(o);for(var n=new Array(o.length/2),e=0,t=n.length;e<t;e++)n[e]=256*o[2*e]+o[2*e+1];var s=[];return n.forEach(function(o){s.push(r(o))}),i.decompress(s.join(""))},compressToEncodedURIComponent:function(r){return null==r?"":i._compress(r,6,function(r){return n.charAt(r)})},decompressFromEncodedURIComponent:function(r){return null==r?"":""==r?null:(r=r.replace(/ /g,"+"),i._decompress(r.length,32,function(o){return t(n,r.charAt(o))}))},compress:function(o){return i._compress(o,16,function(o){return r(o)})},_compress:function(r,o,n){if(null==r)return"";var e,t,i,s={},u={},a="",p="",c="",l=2,f=3,h=2,d=[],m=0,v=0;for(i=0;i<r.length;i+=1)if(a=r.charAt(i),Object.prototype.hasOwnProperty.call(s,a)||(s[a]=f++,u[a]=!0),p=c+a,Object.prototype.hasOwnProperty.call(s,p))c=p;else{if(Object.prototype.hasOwnProperty.call(u,c)){if(c.charCodeAt(0)<256){for(e=0;e<h;e++)m<<=1,v==o-1?(v=0,d.push(n(m)),m=0):v++;for(t=c.charCodeAt(0),e=0;e<8;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1}else{for(t=1,e=0;e<h;e++)m=m<<1|t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t=0;for(t=c.charCodeAt(0),e=0;e<16;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1}0==--l&&(l=Math.pow(2,h),h++),delete u[c]}else for(t=s[c],e=0;e<h;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1;0==--l&&(l=Math.pow(2,h),h++),s[p]=f++,c=String(a)}if(""!==c){if(Object.prototype.hasOwnProperty.call(u,c)){if(c.charCodeAt(0)<256){for(e=0;e<h;e++)m<<=1,v==o-1?(v=0,d.push(n(m)),m=0):v++;for(t=c.charCodeAt(0),e=0;e<8;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1}else{for(t=1,e=0;e<h;e++)m=m<<1|t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t=0;for(t=c.charCodeAt(0),e=0;e<16;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1}0==--l&&(l=Math.pow(2,h),h++),delete u[c]}else for(t=s[c],e=0;e<h;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1;0==--l&&(l=Math.pow(2,h),h++)}for(t=2,e=0;e<h;e++)m=m<<1|1&t,v==o-1?(v=0,d.push(n(m)),m=0):v++,t>>=1;for(;;){if(m<<=1,v==o-1){d.push(n(m));break}v++}return d.join("")},decompress:function(r){return null==r?"":""==r?null:i._decompress(r.length,32768,function(o){return r.charCodeAt(o)})},_decompress:function(o,n,e){var t,i,s,u,a,p,c,l=[],f=4,h=4,d=3,m="",v=[],g={val:e(0),position:n,index:1};for(t=0;t<3;t+=1)l[t]=t;for(s=0,a=Math.pow(2,2),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;switch(s){case 0:for(s=0,a=Math.pow(2,8),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;c=r(s);break;case 1:for(s=0,a=Math.pow(2,16),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;c=r(s);break;case 2:return""}for(l[3]=c,i=c,v.push(c);;){if(g.index>o)return"";for(s=0,a=Math.pow(2,d),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;switch(c=s){case 0:for(s=0,a=Math.pow(2,8),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;l[h++]=r(s),c=h-1,f--;break;case 1:for(s=0,a=Math.pow(2,16),p=1;p!=a;)u=g.val&g.position,g.position>>=1,0==g.position&&(g.position=n,g.val=e(g.index++)),s|=(u>0?1:0)*p,p<<=1;l[h++]=r(s),c=h-1,f--;break;case 2:return v.join("")}if(0==f&&(f=Math.pow(2,d),d++),l[c])m=l[c];else{if(c!==h)return null;m=i+i.charAt(0)}v.push(m),l[h++]=i+m.charAt(0),i=m,0==--f&&(f=Math.pow(2,d),d++)}}};return i}();"function"==typeof define&&define.amd?define(function(){return LZString}):"undefined"!=typeof module&&null!=module?module.exports=LZString:"undefined"!=typeof angular&&null!=angular&&angular.module("LZString",[]).factory("LZString",function(){return LZString});
-</script>
 <style>
 :root{
   /* 60 — gris */
@@ -202,7 +199,6 @@ body[data-tab="hor"] #reglas{display:none;}
 .tools button{background:var(--pared);border:1px solid var(--linea);color:var(--tinta);font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:7px 10px;}
 .tools button:hover{border-color:var(--pista);}
 .tools button.danger:hover{border-color:var(--red);color:var(--red);}
-.io{width:100%;min-height:64px;font-family:var(--mono);font-size:11px;border:1px solid var(--linea);padding:8px;background:var(--pared);display:none;}
 #btnForm{border-color:var(--red);color:var(--red-osc);}
 .form-import{display:none;border:1px solid var(--red);background:#fff;padding:11px;margin:0 0 11px;}
 .form-import.on{display:block;}
@@ -216,7 +212,6 @@ body[data-tab="hor"] #reglas{display:none;}
 .fi-op-head{font-family:var(--display);font-size:15px;font-weight:700;margin-bottom:5px;}
 .fi-best{font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--red);padding:2px 6px;margin-left:6px;vertical-align:middle;}
 .fi-op button[data-elegirgrupo]{margin-top:8px;}
-.io.on{display:block;}
 
 /* ---------- VALIDADOR ---------- */
 details.diag-wrap{border:1px solid var(--linea);background:var(--pared-2);}
@@ -495,7 +490,6 @@ body[data-rol="cliente"] #heroSub{display:none;}
 .pub-btns button:hover{background:var(--red);border-color:var(--red);}
 .pub-btns .pub-main{background:var(--red);border-color:var(--red);font-size:12px;padding:11px 14px;width:100%;}
 .pub-btns .pub-main:hover{background:var(--red-osc);border-color:var(--red-osc);}
-.pub-sep{text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-suave);margin:14px 0 8px!important;}
 .pub-body code{font-family:var(--mono);font-size:11px;background:var(--pared-2);padding:1px 4px;color:var(--red-osc);}
 .nube-box{border:1px solid var(--red);background:#fff;padding:11px;margin:0 0 4px;}
 .nube-t{font-family:var(--display);font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:var(--red-osc);margin-bottom:6px;}
@@ -628,7 +622,7 @@ body[data-tab="res"] #config,body[data-tab="res"] #validador,body[data-tab="res"
 </style>
 </head>
 <body data-tab="cfg">
-<script>try{document.body.setAttribute('data-rol',(/[?&]t=/.test(location.search)||location.hash.indexOf('#data=')===0)?'cliente':'org');}catch(e){document.body.setAttribute('data-rol','org');}</script>
+<script>try{document.body.setAttribute('data-rol',/[?&]t=/.test(location.search)?'cliente':'org');}catch(e){document.body.setAttribute('data-rol','org');}</script>
 
 <div id="splash"><div class="splash-in">
   <svg class="splash-court" viewBox="0 0 1164 597" aria-hidden="true"><g fill="#c1121f"><rect x="0" y="0" width="139" height="597"/><rect x="163" y="0" width="400" height="286"/><rect x="163" y="308" width="400" height="289"/><rect x="601" y="0" width="400" height="286"/><rect x="601" y="308" width="400" height="289"/><rect x="1025" y="0" width="139" height="597"/></g></svg>
@@ -704,20 +698,7 @@ body[data-tab="res"] #config,body[data-tab="res"] #validador,body[data-tab="res"
         </div>
         <p class="nube-estado" id="nubeEstado"></p>
       </div>
-      <p class="pub-sep">— o compartí una foto fija, sin tiempo real —</p>
-      <p><b>Opción recomendada.</b> Descargá el archivo del torneo (ya lleva todo adentro: categorías, grupos, horarios y resultados) y mandalo por WhatsApp como <b>documento adjunto</b>. El jugador lo abre y entra directo a su vista, sin poder editar.</p>
-      <div class="pub-btns">
-        <button data-descargar="1" class="pub-main">⬇ Descargar archivo para jugadores</button>
-      </div>
-      <p class="pub-sep">— o, si el torneo ya está subido a internet —</p>
-      <p>Copiá el enlace y compartilo. Sólo funciona si este archivo está publicado en un hosting (no sirve un enlace <code>file:///</code> de tu propia compu).</p>
-      <textarea class="pub-link" id="pubLink" readonly></textarea>
-      <div class="pub-btns">
-        <button data-copiar="1">Copiar enlace</button>
-        <button data-abrir="1">Probar vista jugador</button>
-        <button data-cerrarpub="1">Cerrar</button>
-      </div>
-      <p style="margin-top:8px" id="pubHint"></p>
+      <div class="pub-btns"><button data-cerrarpub="1">Cerrar</button></div>
     </div>
   </div>
 
@@ -741,16 +722,13 @@ body[data-tab="res"] #config,body[data-tab="res"] #validador,body[data-tab="res"
   <section id="config" class="org-only">
     <div class="sec-head"><span class="n">CFG</span><h2>Configuración</h2><span class="rule"></span></div>
     <div class="tools">
-      <button id="btnPreset">Cargar ejemplo</button>
-      <button id="btnVacio" class="danger">Empezar de cero</button>
-      <button id="btnExport">Exportar</button>
-      <button id="btnImport">Importar</button>
       <button id="btnForm">Importar formulario (CSV)</button>
       <button id="btnAgrupar">Armar grupos (formulario)</button>
+      <button id="btnVacio" class="danger">Empezar de cero</button>
     </div>
     <input type="file" id="fileForm" accept=".csv,.tsv,.txt" style="display:none">
+    <input type="file" id="fileCopia" accept=".json,application/json" style="display:none">
     <div id="formImport" class="form-import"></div>
-    <textarea class="io" id="io" spellcheck="false" placeholder="Pegá acá el texto exportado y volvé a tocar Importar."></textarea>
     <div id="cfgPanel"></div>
   </section>
 
@@ -797,7 +775,7 @@ body[data-tab="res"] #config,body[data-tab="res"] #validador,body[data-tab="res"
     <div class="org-only">
       <p class="note"><b>Formato de grupo.</b> “Llave” es el formato de planilla de club: en grupos de 3 juegan 1–2, después el 3 contra el ganador y contra el perdedor; en grupos de 4 es una llave de consolación y el orden final sale de los cruces, no de los puntos. “Todos contra todos” genera todos los partidos posibles y ahí sí manda la tabla.</p>
       <p class="note"><b>Fase final.</b> Se calcula sola: clasificados = grupos × cupos + repechaje. Si el total no es potencia de 2, el motor arma la llave con <b>BYE</b>: los mejores sembrados descansan la primera ronda y el resto juega una ronda previa.</p>
-      <p class="note"><b>Guardado.</b> Se guarda solo si el visor lo permite. Antes de cerrar, usá Exportar y quedate con el texto.</p>
+      <p class="note"><b>Guardado.</b> Se guarda solo en este navegador y se sincroniza con la nube. Los teléfonos y el historial de los jugadores quedan sólo acá: bajá la copia de seguridad desde Configuración.</p>
     </div>
     <div class="foot-social">
       <a href="https://www.instagram.com/cordonpadelclub/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
@@ -813,13 +791,12 @@ body[data-tab="res"] #config,body[data-tab="res"] #validador,body[data-tab="res"
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
       </a>
     </div>
-    <p class="sig" id="footSig">v13.8 · Agosto 2026</p>
+    <p class="sig" id="footSig">v13.9 · Agosto 2026</p>
   </div>
 </footer>
 
 <div id="gridOpsModal" class="ops-modal"><div class="ops-box"></div></div>
 
-<script id="torneoEmbed" type="application/x-tournament">__SIN_DATOS__</script>
 <script>
 /* =====================================================================
    UTILIDADES
@@ -865,45 +842,6 @@ function estadoVacio(){
     res:{}, jug:{}, par:{}, fijos:{}
   };
 }
-function estadoEjemplo(){
-  const c = (n,p,f,G,pa,re) => { const x = catNueva(n,p,f); x.grupos = G; x.pasan = pa; x.repes = re; return x; };
-  const est = {
-    torneo:'6to Torneo Cordón Pádel Club',
-    fecha:'12 al 14 de setiembre · Cordón Padel Club',
-    canchas:3,
-    dias:[
-      {id:uid(), nom:'Jueves',  desde:'19:00', hasta:'23:00', franja:60},
-      {id:uid(), nom:'Viernes', desde:'17:00', hasta:'23:00', franja:60},
-      {id:uid(), nom:'Sábado',  desde:'08:00', hasta:'23:00', franja:60},
-      {id:uid(), nom:'Domingo', desde:'08:00', hasta:'22:00', franja:60}
-    ],
-    reglas:{p20:3, ptb:2, dtb:1, p02:0, desempate:'pts-pg-h2h-dg'},
-    modoGrilla:'auto',
-    cats:[
-      c('8va Libre', 9, 'llave', 3, 1, 1),
-      c('7ma Libre', 12,'llave', 4, 2, 0),
-      c('6ta Libre', 12,'llave', 4, 2, 0),
-      c('5ta Libre', 11,'llave', 3, 1, 1),
-      c('4ta Libre', 8, 'llave', 2, 2, 0),
-      c('3ra Libre', 13,'llave', 4, 2, 0)
-    ],
-    res:{}, jug:{}, par:{}, fijos:{}
-  };
-  // parejas de muestra en la 7ma, para que la grilla no arranque toda con números
-  const c7 = est.cats[1].id;
-  const muestra = [['Martín Silva','Diego Rodríguez'],['Juan Pérez','Pablo Gómez'],
-    ['Nacho Correa','Martín Sanguinetti'],['Luis Fernández','Andrés López'],
-    ['Sergio García','Ramiro Díaz'],['Bruno Techera','Emiliano Suárez'],
-    ['Nicolás Cabrera','Federico Núñez'],['Gonzalo Méndez','Lucas Rossi'],
-    ['Matías Blanco','Rodrigo Sosa'],['Santiago Vega','Joaquín Castro'],
-    ['Leandro Ferrari','Agustín Lima'],['Facundo Acosta','Marcos Rivas']];
-  muestra.forEach((par, i) => {
-    const js = par.map(nm => { const id = pidNuevo(); est.jug[id] = {id, nom:nm, tel:'', hist:[]}; return id; });
-    est.par[c7+':'+i] = {js, disp:[]};
-  });
-  return est;
-}
-
 let S = estadoVacio();
 let catActiva = null, diaActivo = 0;
 let resDia = null, resDesde = null, resHasta = null;
@@ -925,8 +863,8 @@ function normalizar(o){ o.yt = o.yt || {}; o.fijos = o.fijos || {}; o.jug = o.ju
 
 /* Formato viejo (hasta v13.5): la pareja era un solo texto en o.nom["catId:idx"]
    ("Silva / Rodríguez") y su disponibilidad iba aparte en o.disp. Acá se parte ese
-   texto en dos jugadores del padrón. Corre sobre archivos guardados, enlaces #data=
-   y estados de la nube, así que nada de lo publicado antes deja de abrir. */
+   texto en dos jugadores del padrón. Corre sobre lo guardado en el navegador y sobre los estados de la nube,
+   así que nada de lo publicado antes deja de abrir. */
 function migrarJugadores(o){
   const nom = o.nom || {}, disp = o.disp || {};
   const claves = Object.keys(nom).concat(Object.keys(disp));
@@ -956,17 +894,16 @@ async function cargar(){
     let raw = null;
     try{ const r = await window.storage.get('padel:esqueleto'); if(r && r.value) raw = r.value; }catch(e){}
     if(!raw){ try{ raw = localStorage.getItem('padel:esqueleto'); }catch(e){} }
-    S = raw ? JSON.parse(raw) : estadoEjemplo();
+    S = raw ? JSON.parse(raw) : estadoVacio();
     normalizar(S);
-  }catch(e){ S = estadoEjemplo(); }
+  }catch(e){ S = estadoVacio(); }
 }
 
-/* ---- Publicar / leer desde la URL (#data=…) ---- */
-/* Padrón para compartir. NUNCA sale de acá el teléfono ni el historial: sólo id y nombre.
-   Esto vale para los tres canales — el archivo de WhatsApp, el enlace #data= y la fila de
-   Supabase —, así que la exposición no depende de que las políticas RLS estén bien puestas.
-   Los datos personales viven únicamente en este dispositivo (ver DATOS PRIVADOS) y en el
-   archivo que bajás con "Finalizar torneo". */
+/* ---- Estado para compartir ----
+   Padrón para la nube. NUNCA sale de acá el teléfono ni el historial: sólo id y nombre,
+   así que la exposición no depende de que las políticas RLS estén bien puestas.
+   Los datos personales viven únicamente en este dispositivo (ver DATOS PRIVADOS), en la
+   copia de seguridad y en el archivo que bajás con "Finalizar torneo". */
 function jugPublicable(){
   const out = {};
   Object.keys(S.jug || {}).forEach(id => {
@@ -1014,23 +951,6 @@ function aplicarPrivado(o){
   });
   return o;
 }
-function generarLink(){
-  const json = JSON.stringify(estadoPublicable());
-  const comp = (window.LZString ? LZString.compressToEncodedURIComponent(json) : encodeURIComponent(json));
-  const base = location.href.split('#')[0];
-  return base + '#v=1&data=' + comp;
-}
-function leerLink(){
-  const h = location.hash || '';
-  const m = h.match(/data=([^&]+)/);
-  if(!m) return null;
-  try{
-    const raw = window.LZString ? LZString.decompressFromEncodedURIComponent(m[1]) : decodeURIComponent(m[1]);
-    const p = JSON.parse(raw);
-    return expandir(p);
-  }catch(e){ return null; }
-}
-
 /* ============ TIEMPO REAL (Supabase) ============ */
 const SB_URL = 'https://ejbdnntnnaebqocohumq.supabase.co';
 const SB_KEY = 'sb_publishable_1pC3FRMX1CZtQKN3xHHniw_mVTMqpqC';
@@ -1863,6 +1783,15 @@ function renderCfg(){
         <p class="readout" style="margin:0 0 10px">Cada jugador es una ficha propia con contacto e historial, y la pareja apunta a dos de ellas. Editás cada uno desde <b>Parejas anotadas</b>, dentro de la pestaña de su categoría.</p>
         <div class="row-actions"><span class="readout">Guardá en cada ficha hasta dónde llegó su pareja, sin cerrar el torneo. Se puede repetir: reescribe la entrada de este torneo en vez de duplicarla.</span>
         <button class="mini" data-archivar="1">Actualizar historial</button></div>
+      </div></div>
+    <div class="card"><div class="card-head"><h3>Copia de seguridad</h3><span class="tagm">de este dispositivo</span></div>
+      <div class="card-body">
+        <p class="readout" style="margin:0 0 10px">Los teléfonos y el historial de los jugadores <b>no viajan a la nube</b> — viven sólo en este navegador.
+        Si borrás los datos del navegador o cambiás de computadora, se pierden. Bajá una copia cada tanto: es la única forma de recuperarlos.</p>
+        <div class="pub-btns">
+          <button data-copiabajar="1">⬇ Bajar copia de seguridad</button>
+          <button data-copiarestaurar="1">Restaurar desde archivo</button>
+        </div>
       </div></div>
     <div class="card"><div class="card-head"><h3>Cierre del torneo</h3><span class="tagm">${S.cats.reduce((n,c) => n + partidosDe(c).length, 0)} partidos</span></div>
       <div class="card-body">
@@ -3391,16 +3320,13 @@ document.addEventListener('input', e => {
 });
 
 document.addEventListener('click', e => {
-  const b = e.target.closest('[data-act], [data-cat], [data-d], [data-mv], [data-drop], [data-swapcell], [data-unfix], [data-cancelmv], [data-clearfix], [data-modo], [data-verpub], [data-verorg], [data-pub], [data-copiar], [data-abrir], [data-cerrarpub], [data-descargar], [data-nubepub], [data-nubecopiar], [data-nubeabrir], [data-login], [data-logout], [data-impok], [data-impcancel], [data-aplicar], [data-elegirgrupo], [data-gridops], [data-elegirgrilla], [data-cerrargridops], [data-copiarorg], [data-parchip], [data-pardrop], [data-parmv], [data-pardel], [data-paredit], [data-paradd], [data-parsave], [data-parcancel], [data-partag], [data-histadd], [data-histdel], [data-archivar], [data-finalizar], [data-exportar], [data-expbajar], [data-expcontacto], [data-cerrarexport]');
+  const b = e.target.closest('[data-act], [data-cat], [data-d], [data-mv], [data-drop], [data-swapcell], [data-unfix], [data-cancelmv], [data-clearfix], [data-modo], [data-verpub], [data-verorg], [data-pub], [data-cerrarpub], [data-copiabajar], [data-copiarestaurar], [data-nubepub], [data-nubecopiar], [data-nubeabrir], [data-login], [data-logout], [data-impok], [data-impcancel], [data-aplicar], [data-elegirgrupo], [data-gridops], [data-elegirgrilla], [data-cerrargridops], [data-copiarorg], [data-parchip], [data-pardrop], [data-parmv], [data-pardel], [data-paredit], [data-paradd], [data-parsave], [data-parcancel], [data-partag], [data-histadd], [data-histdel], [data-archivar], [data-finalizar], [data-exportar], [data-expbajar], [data-expcontacto], [data-cerrarexport]');
   if(!b) return;
   const d = b.dataset;
-  if(d.descargar){ descargarArchivo(b); return; }
   if(d.verpub){ ROL = 'cliente'; miPareja = null; render(); scrollTop(); return; }
   if(d.verorg){ if(SOLO_JUGADOR) return; ROL = 'org'; render(); scrollTop(); return; }
   if(d.pub){ if(SOLO_JUGADOR) return; togglePub(); return; }
   if(d.cerrarpub){ $('#pubBox').classList.remove('on'); return; }
-  if(d.copiar){ const t = $('#pubLink'); t.select();
-    navigator.clipboard ? navigator.clipboard.writeText(t.value).then(()=>flash(b,'¡Copiado!')) : (document.execCommand('copy'), flash(b,'¡Copiado!')); return; }
   if(d.nubepub){ nubePublicar(); return; }
   if(d.nubecopiar){ const t = $('#nubeLink'); t.select();
     navigator.clipboard ? navigator.clipboard.writeText(t.value).then(()=>flash(b,'¡Copiado!')) : (document.execCommand('copy'), flash(b,'¡Copiado!')); return; }
@@ -3416,7 +3342,8 @@ document.addEventListener('click', e => {
     if(op){ aplicarPlanAgrupar(op); opsAgrupar = null; const c = $('#formImport'); c.classList.remove('on'); c.innerHTML = ''; guardar(); render(); toast('Grupos armados'); }
     return;
   }
-  if(d.abrir){ window.open($('#pubLink').value, '_blank'); return; }
+  if(d.copiabajar){ bajarCopia(); flash(b, '✓ Copia bajada'); return; }
+  if(d.copiarestaurar){ $('#fileCopia').click(); return; }
   if(d.cat){ catActiva = d.cat; render(); return; }
   if(d.d !== undefined){ diaActivo = +d.d; renderGrilla(); return; }
   if(d.parmv !== undefined){ const cat = S.cats.find(c => c.id === catActiva); if(!cat) return;
@@ -3531,7 +3458,6 @@ document.addEventListener('click', e => {
   guardar(); render();
 });
 
-$('#btnPreset').onclick = () => { if(confirm('Reemplaza la configuración actual por el ejemplo de 6 categorías.')){ S = estadoEjemplo(); catActiva = null; guardar(); render(); } };
 $('#btnVacio').onclick = () => { if(confirm('Borra todo y arranca con una categoría vacía.')){ S = estadoVacio(); catActiva = null; guardar(); render(); } };
 $('#btnClear').onclick = () => { if(confirm('Se borran todos los resultados cargados.')){ S.res = {}; guardar(); render(); } };
 $('#btnDemo').onclick = () => {
@@ -3549,16 +3475,32 @@ $('#btnDemo').onclick = () => {
   });
   guardar(); render();
 };
-$('#btnExport').onclick = () => { const io = $('#io'); io.classList.add('on'); io.value = JSON.stringify(S); io.select(); };
-$('#btnImport').onclick = () => {
-  const io = $('#io');
-  if(!io.classList.contains('on')){ io.classList.add('on'); io.value = ''; io.focus(); return; }
-  try{
-    const d = JSON.parse(io.value);
-    if(!d || !d.cats) throw 0;
-    normalizar(d);
-    S = d; catActiva = null; io.classList.remove('on'); guardar(); render();
-  }catch(e){ alert('Ese texto no es una configuración válida. Copiá de nuevo lo que dio Exportar.'); }
+/* ---- Copia de seguridad: el estado COMPLETO, con teléfonos e historial ----
+   No confundir con "Finalizar torneo y exportar datos": aquello es un informe plano
+   para otro sistema y no vuelve a entrar acá. Esto es la foto del estado interno y
+   es lo único que restaura los datos personales, que no están en la nube. */
+function bajarCopia(){
+  const d = JSON.stringify(S, null, 2);
+  descargarTexto(d, slugTorneo()+'-copia-'+new Date().toISOString().slice(0,10)+'.json', 'application/json');
+}
+function restaurarCopia(texto){
+  let d;
+  try{ d = JSON.parse(texto); }catch(e){ alert('Ese archivo no es una copia de seguridad válida (no se pudo leer el JSON).'); return; }
+  if(!d || !Array.isArray(d.cats)){ alert('Ese archivo no parece una copia de seguridad de un torneo.'); return; }
+  const cats = d.cats.length;
+  const jug = Object.keys(d.jug || {}).length || Object.keys(d.nom || {}).length;
+  if(!confirm('Restaurar "'+(d.torneo || 'sin nombre')+'" — '+cats+' categorías, '+jug+' jugadores.\n\nReemplaza TODO lo que hay cargado ahora. ¿Seguimos?')) return;
+  normalizar(d);
+  S = d; catActiva = null;
+  guardar(); render();
+  toast('Copia restaurada');
+}
+$('#fileCopia').onchange = (e) => {
+  const f = e.target.files && e.target.files[0]; if(!f) return;
+  const rd = new FileReader();
+  rd.onload = () => { restaurarCopia(rd.result); e.target.value = ''; };
+  rd.onerror = () => { alert('No pude leer el archivo.'); e.target.value = ''; };
+  rd.readAsText(f, 'utf-8');
 };
 
 /* ===================== IMPORTAR FORMULARIO (CSV) ===================== */
@@ -3797,39 +3739,9 @@ $('#fileForm').onchange = (e) => {
 function scrollTop(){ try{ window.scrollTo({top:0, behavior:'smooth'}); }catch(e){ window.scrollTo(0,0); } }
 function flash(btn, txt){ const o = btn.textContent; btn.textContent = txt; setTimeout(() => btn.textContent = o, 1400); }
 
-function nombreArchivo(){
-  const base = (S.torneo || 'torneo').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9]+/g,'_').replace(/^_|_$/g,'');
-  return (base || 'torneo') + '_jugadores.html';
-}
-function descargarArchivo(btn){
-  // 1) estado comprimido en base64 (más robusto para incrustar que el de la URL)
-  const json = JSON.stringify(estadoPublicable());
-  const dato = window.LZString ? LZString.compressToBase64(json) : btoa(unescape(encodeURIComponent(json)));
-  // 2) tomar el HTML de esta misma página y meter el estado en el contenedor embebido
-  let html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-  html = html.replace(
-    /(<script id="torneoEmbed"[^>]*>)[\s\S]*?(<\/script>)/,
-    '$1' + dato.replace(/\$/g,'$$$$') + '$2'
-  );
-  // 3) descargar como archivo
-  const blob = new Blob([html], {type:'text/html;charset=utf-8'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = nombreArchivo();
-  document.body.appendChild(a); a.click();
-  setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 500);
-  if(btn) flash(btn, '✓ Archivo generado');
-}
-
 function togglePub(){
   const box = $('#pubBox');
   if(box.classList.contains('on')){ box.classList.remove('on'); return; }
-  const link = generarLink();
-  $('#pubLink').value = link;
-  const esFile = link.startsWith('file:');
-  $('#pubHint').innerHTML = esFile
-    ? `<span style="color:var(--red)">Ojo: este enlace empieza con <code>file:///</code>, así que sólo abre en tu propia computadora. Para compartir, usá el botón de descarga de arriba.</span>`
-    : `<span style="color:var(--tinta-suave)">Enlace listo. Como está publicado en internet, funciona para cualquiera.</span>`;
   box.classList.add('on');
   // reflejar estado de la nube
   const ns = $('#nubeSlug');
@@ -3888,17 +3800,6 @@ document.addEventListener('keydown', e => {
   }
 });
 
-/* ---- leer estado embebido en un archivo descargado ---- */
-function leerEmbed(){
-  const el = document.getElementById('torneoEmbed');
-  if(!el) return null;
-  const txt = (el.textContent || '').trim();
-  if(!txt || txt === '__SIN_DATOS__') return null;
-  try{
-    const raw = window.LZString ? LZString.decompressFromBase64(txt) : atob(txt);
-    return expandir(JSON.parse(raw));
-  }catch(e){ return null; }
-}
 
 
 /* ---- barra de scroll propia (siempre visible) para las filas de pestañas ---- */
@@ -3943,10 +3844,9 @@ window.addEventListener('resize', syncTracks);
 function finLoad(){ const s = document.getElementById('splash'); if(s && !s.classList.contains('off')){ s.classList.add('off'); setTimeout(() => { if(s.parentNode) s.remove(); }, 400); } }
 setTimeout(finLoad, 6000);   // red de seguridad: nunca dejar el splash trabado
 (async () => {
-  const embebido = leerEmbed();
   const slug = leerSlug();
 
-  if(slug || embebido || leerLink()){ document.body.setAttribute('data-rol','cliente'); }
+  if(slug){ document.body.setAttribute('data-rol','cliente'); }
 
   // 1) JUGADOR EN VIVO — enlace ?t=slug (nube)
   if(slug && SB){
@@ -3963,17 +3863,7 @@ setTimeout(finLoad, 6000);   // red de seguridad: nunca dejar el splash trabado
     // el torneo no existe en la nube: seguimos abajo
   }
 
-  // 2) JUGADOR FIJO — archivo embebido o enlace #data=
-  const desde = embebido || leerLink();
-  if(desde){
-    S = desde; ROL = 'cliente'; SOLO_JUGADOR = true;
-    render();
-    relojTimer = setInterval(() => { if(ROL === 'cliente'){ renderAhora(); renderMiPareja(); renderFasesFinales(); renderGrilla(); } }, 60000);
-    finLoad();
-    return;
-  }
-
-  // 3) ORGANIZADOR CONECTADO — enlace ?org=slug (edita y sincroniza entre dispositivos)
+  // 2) ORGANIZADOR CONECTADO — enlace ?org=slug (edita y sincroniza entre dispositivos)
   const orgSlug = leerOrgSlug();
   if(orgSlug && SB){
     ROL = 'org';
@@ -3984,7 +3874,7 @@ setTimeout(finLoad, 6000);   // red de seguridad: nunca dejar el splash trabado
     return;
   }
 
-  // 4) ORGANIZADOR (local, un solo dispositivo)
+  // 3) ORGANIZADOR (local, un solo dispositivo)
   await cargar(); ROL = 'org';
   // reconectar autosync si ya se publicó desde este dispositivo
   try{ const rec = localStorage.getItem('padel:slug'); if(rec && SB){ NUBE.slug = rec; NUBE.on = true; nubeSuscribirOrg(rec); } }catch(e){}
