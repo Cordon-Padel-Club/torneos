@@ -1,0 +1,9 @@
+# Este repo es publico y el historial de git no se puede borrar.
+# Los exports y las copias de seguridad del torneo tienen nombres y telefonos
+# de gente real: si entran una vez, quedan para siempre.
+# Por eso se ignora TODO por defecto y se habilita a mano solo lo que va.
+
+*
+
+!.gitignore
+!index.html
